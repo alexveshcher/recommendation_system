@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
-  has_and_belongs_to_many :videos
+  has_many :user_videos
+  has_many :videos, through: :user_videos
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
