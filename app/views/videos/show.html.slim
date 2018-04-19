@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @video.title
+p
+  strong Description:
+  = @video.description
+p
+  strong Tags:
+  = @video.tags
+
+=> link_to 'Edit', edit_video_path(@video)
+'|
+=< link_to 'Back', videos_path
