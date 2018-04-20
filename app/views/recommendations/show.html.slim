@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong User:
+  = @recommendation.user
+p
+  strong Video:
+  = @recommendation.video
+p
+  strong Importance:
+  = @recommendation.importance
+
+=> link_to 'Edit', edit_recommendation_path(@recommendation)
+'|
+=< link_to 'Back', recommendations_path

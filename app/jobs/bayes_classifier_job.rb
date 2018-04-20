@@ -16,13 +16,15 @@ class BayesClassifierJob < ApplicationJob
     bayes_classifier.classify(video.tags.split(' '))
   end
 
-  def self.show_recommended_videos(user)
+  def self.fill_recommendendations_for_user(user)
     results = []
     Video.all.each do |v|
       likehood = BayesClassifierJob.likehood(user, v)['like']
+      Recommendation.create!(user: user, video: v, importance: likehood)
       results << { likehood: likehood, video_id: v.id }
     end
-    puts results.sort_by { |hsh| hsh[:likehood]  }
+
+    # puts results.sort_by { |hsh| hsh[:likehood]  }
   end
 
 end
